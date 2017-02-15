@@ -87,8 +87,8 @@ Example #1
 
 
 ```
-MATCH {class: vEntityWithAccessionedSequence, as: ewas, where: (stId = 'R-HSA-199420')}-referenceEntity->{as: re}
-RETURN $pathelements
+MATCH {class: vEntityWithAccessionedSequence, as: ewas, where: (stId = 'R-HSA-199420')}-referenceEntity->{class: vReferenceEntity, as: re}
+RETURN ewas.displayName AS EWAS, re.identifier AS Identifier
 ```
 
 Example #2
