@@ -10,13 +10,20 @@ The aim of this repository is to make the Reactome database available as a graph
 
 We have imported the Reactome graph database into OrientDB using the [Neo4j to OrientDB Importer](http://orientdb.com/neo4j-to-orientdb-importer/), and then optimized the Reactome structure for OrientDB
 
-The reactome database is updated every 3-4 months. To start with, please select the branch related to your Reactome version (e.g. 59)
+The reactome database is updated every 3-4 months. To start with, please select the branch related to your Reactome version (e.g. 59): you will be able to download directly the migrated database
 
 Note: not all versions may have been imported into OrientDB - but you can perform the migration yourself 
 
 Please open an issue if you have any questions or problems
 
 Many thanks,
+
+## Using a migrated version
+
+To use a version of the Reactome database that has been migrated already to OrientDB:
+
+- Download the `reactome.zip` archive from one of the branches of this repository (identify the one corresponding to your database version, if it exists)
+- Unzip `reactome.zip` into the `databases` directory of your OrientDB installation
 
 
 ## High-level migration steps
