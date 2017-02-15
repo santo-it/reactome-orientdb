@@ -95,7 +95,7 @@ Example #1
 
 ```
 MATCH {class: vEntityWithAccessionedSequence, as: ewas, where: (stId = 'R-HSA-199420')}-referenceEntity->{class: vReferenceEntity, as: re}
-RETURN ewas.displayName AS EWAS, re.identifier AS Identifier
+RETURN $pathelements
 ```
 
 Example #2
