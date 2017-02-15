@@ -59,3 +59,46 @@ $ ./server.sh
 Step 6: Point your browser to `http://localhost:2480` and connect to the reactome database using user `admin` and password `admin`
 
 ![](image1.png)
+
+
+## Querying the Reactome DB
+
+Some query examples are reported below (please execute them from the "Graph Editor" Tab)
+
+### Retrieving objects based on their identifier
+
+Example #1
+
+```
+MATCH {class: vpathway, as: pathway, where: (stId = 'R-HSA-1236975')}
+RETURN $pathelements
+```
+
+Example #2
+
+```
+MATCH {class: vEntityWithAccessionedSequence, as: ewas, where: (stId = 'R-HSA-199420')}
+RETURN $pathelements
+```
+
+### Querying vertices connected by specific edges types
+
+Example #1
+
+
+```
+MATCH {class: vEntityWithAccessionedSequence, as: ewas, where: (stId = 'R-HSA-199420')}-referenceEntity->{as: re}
+RETURN $pathelements
+```
+
+Example #2
+
+```
+MATCH {
+	   class: vEntityWithAccessionedSequence, as: ewas, where: (stId = 'R-HSA-199420')
+	  }-referenceEntity->{
+	   class: vReferenceEntity, as: re
+	  }-referenceDatabase->{
+	   class: vReferenceDatabase, as: rd}
+RETURN $pathelements
+```
