@@ -1,5 +1,7 @@
 # reactome-orientdb
 
+![](image2.png)
+
 ## Introduction
 
 Hello and welcome to the reactome-orientdb repository!
@@ -55,3 +57,5 @@ $ ./server.sh
 ```
 
 Step 6: Point your browser to `http://localhost:2480` and connect to the reactome database using user `admin` and password `admin`
+
+![](image1.png)
