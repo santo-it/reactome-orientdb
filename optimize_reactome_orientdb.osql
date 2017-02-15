@@ -1,0 +1,177 @@
+
+CONNECT plocal:../databases/reactome admin admin
+
+CREATE CLASS vDatabaseObject EXTENDS V 
+CREATE CLASS vAbstractModifiedResidue EXTENDS V, vDatabaseObject 
+CREATE CLASS vGeneticallyModifiedResidue EXTENDS V, vAbstractModifiedResidue 
+CREATE CLASS vFragmentModification EXTENDS V, vGeneticallyModifiedResidue 
+CREATE CLASS vFragmentDeletionModification  EXTENDS V, vFragmentModification  
+CREATE CLASS vFragmentInsertionModification EXTENDS V, vFragmentModification  
+CREATE CLASS vFragmentReplacedModification  EXTENDS V, vFragmentModification  
+CREATE CLASS vReplacedResidue EXTENDS V, vGeneticallyModifiedResidue  
+CREATE CLASS vTranslationalModification EXTENDS V, vAbstractModifiedResidue 
+CREATE CLASS vCrosslinkedResidue EXTENDS V,  vTranslationalModification 
+CREATE CLASS vInterChainCrosslinkedResidue EXTENDS V, vCrosslinkedResidue  
+CREATE CLASS vIntraChainCrosslinkedResidue EXTENDS V, vCrosslinkedResidue  
+CREATE CLASS vGroupModifiedResidue EXTENDS V, vTranslationalModification  
+CREATE CLASS vModifiedResidue EXTENDS V, vTranslationalModification  
+CREATE CLASS vAffiliation EXTENDS V, vDatabaseObject  
+CREATE CLASS vCatalystActivity EXTENDS V, vDatabaseObject  
+CREATE CLASS vDatabaseIdentifier EXTENDS V, vDatabaseObject  
+CREATE CLASS vEntityFunctionalStatus EXTENDS V, vDatabaseObject  
+CREATE CLASS vEvent EXTENDS V, vDatabaseObject 
+CREATE CLASS vPathway EXTENDS V, vEvent  
+CREATE CLASS vTopLevelPathway EXTENDS V, vPathway  
+CREATE CLASS vReactionLikeEvent EXTENDS V, vEvent 
+CREATE CLASS vBlackBoxEvent EXTENDS V, vReactionLikeEvent  
+CREATE CLASS vDepolymerisation EXTENDS V, vReactionLikeEvent  
+CREATE CLASS vFailedReaction EXTENDS V, vReactionLikeEvent  
+CREATE CLASS vPolymerisation EXTENDS V, vReactionLikeEvent  
+CREATE CLASS vReaction EXTENDS V, vReactionLikeEvent  
+CREATE CLASS vEvidenceType EXTENDS V, vDatabaseObject  
+CREATE CLASS vExternalOntology EXTENDS V, vDatabaseObject 
+CREATE CLASS vDisease EXTENDS V, vExternalOntology  
+CREATE CLASS vPsiMod EXTENDS V, vExternalOntology  
+CREATE CLASS vSequenceOntology EXTENDS V, vExternalOntology  
+CREATE CLASS vFigure EXTENDS V, vDatabaseObject  
+CREATE CLASS vFunctionalStatus EXTENDS V, vDatabaseObject  
+CREATE CLASS vFunctionalStatusType EXTENDS V, vDatabaseObject  
+CREATE CLASS vGO_Term EXTENDS V, vDatabaseObject  
+CREATE CLASS vGO_BiologicalProcess EXTENDS V, vGO_Term  
+CREATE CLASS vGO_CellularComponent EXTENDS V, vGO_Term  
+CREATE CLASS vCompartment EXTENDS V, vGO_CellularComponent  
+CREATE CLASS vEntityCompartment EXTENDS V, vCompartment  
+CREATE CLASS vGO_MolecularFunction EXTENDS V, vGO_Term  
+CREATE CLASS vInstanceEdit EXTENDS V, vDatabaseObject  
+CREATE CLASS vPerson EXTENDS V, vDatabaseObject  
+CREATE CLASS vPhysicalEntity EXTENDS V, vDatabaseObject 
+CREATE CLASS vComplex EXTENDS V, vPhysicalEntity  
+CREATE CLASS vEntitySet EXTENDS V, vPhysicalEntity 
+CREATE CLASS vCandidateSet EXTENDS V, vEntitySet  
+CREATE CLASS vDefinedSet EXTENDS V, vEntitySet  
+CREATE CLASS vOpenSet EXTENDS V, vEntitySet  
+CREATE CLASS vGenomeEncodedEntity EXTENDS V, vPhysicalEntity  
+CREATE CLASS vEntityWithAccessionedSequence EXTENDS V, vGenomeEncodedEntity  
+CREATE CLASS vOtherEntity EXTENDS V, vPhysicalEntity  
+CREATE CLASS vPolymer EXTENDS V, vPhysicalEntity  
+CREATE CLASS vSimpleEntity EXTENDS V, vPhysicalEntity  
+CREATE CLASS vPublication EXTENDS V, vDatabaseObject 
+CREATE CLASS vBook EXTENDS V, vPublication  
+CREATE CLASS vLiteratureReference EXTENDS V, vPublication  
+CREATE CLASS vURL EXTENDS V, vPublication  
+CREATE CLASS vReferenceDatabase EXTENDS V, vDatabaseObject  
+CREATE CLASS vReferenceEntity EXTENDS V, vDatabaseObject 
+CREATE CLASS vReferenceGroup EXTENDS V, vReferenceEntity  
+CREATE CLASS vReferenceMolecule EXTENDS V, vReferenceEntity  
+CREATE CLASS vReferenceSequence EXTENDS V, vReferenceEntity 
+CREATE CLASS vReferenceDNASequence EXTENDS V, vReferenceSequence  
+CREATE CLASS vReferenceGeneProduct EXTENDS V, vReferenceSequence  
+CREATE CLASS vReferenceIsoform EXTENDS V, vReferenceGeneProduct  
+CREATE CLASS vReferenceRNASequence EXTENDS V, vReferenceSequence  
+CREATE CLASS vRegulation EXTENDS V, vDatabaseObject 
+CREATE CLASS vNegativeRegulation EXTENDS V, vRegulation  
+CREATE CLASS vNegativeGeneExpressionRegulation EXTENDS V, vNegativeRegulation  
+CREATE CLASS vPositiveRegulation EXTENDS V, vRegulation  
+CREATE CLASS vPositiveGeneExpressionRegulation EXTENDS V, vPositiveRegulation
+CREATE CLASS vRequirement EXTENDS V, vPositiveRegulation
+CREATE CLASS vSummation EXTENDS V, vDatabaseObject
+CREATE CLASS vTaxon EXTENDS V, vDatabaseObject
+CREATE CLASS vSpecies EXTENDS V, vTaxon
+
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'FragmentDeletionModification') TO CLASS:vFragmentDeletionModification BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'FragmentInsertionModification') TO CLASS:vFragmentInsertionModification BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'FragmentReplacedModification') TO CLASS:vFragmentReplacedModification BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'ReplacedResidue') TO CLASS:vReplacedResidue BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'InterChainCrosslinkedResidue') TO CLASS:vInterChainCrosslinkedResidue BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'IntraChainCrosslinkedResidue') TO CLASS:vIntraChainCrosslinkedResidue BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'GroupModifiedResidue') TO CLASS:vGroupModifiedResidue BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'ModifiedResidue') TO CLASS:vModifiedResidue BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'Affiliation') TO CLASS:vAffiliation BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'CatalystActivity') TO CLASS:vCatalystActivity BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'DatabaseIdentifier') TO CLASS:vDatabaseIdentifier BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'EntityFunctionalStatus') TO CLASS:vEntityFunctionalStatus BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'Pathway') TO CLASS:vPathway BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'TopLevelPathway') TO CLASS:vTopLevelPathway BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'BlackBoxEvent') TO CLASS:vBlackBoxEvent BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'Depolymerisation') TO CLASS:vDepolymerisation BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'FailedReaction') TO CLASS:vFailedReaction BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'Polymerisation') TO CLASS:vPolymerisation BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'Reaction') TO CLASS:vReaction BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'EvidenceType') TO CLASS:vEvidenceType BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'Disease') TO CLASS:vDisease BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'PsiMod') TO CLASS:vPsiMod BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'SequenceOntology') TO CLASS:vSequenceOntology BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'Figure') TO CLASS:vFigure BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'FunctionalStatus') TO CLASS:vFunctionalStatus BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'FunctionalStatusType') TO CLASS:vFunctionalStatusType BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'GO_BiologicalProcess') TO CLASS:vGO_BiologicalProcess BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'GO_CellularComponent') TO CLASS:vGO_CellularComponent BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'Compartment') TO CLASS:vCompartment BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'EntityCompartment') TO CLASS:vEntityCompartment BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'GO_MolecularFunction') TO CLASS:vGO_MolecularFunction BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'InstanceEdit') TO CLASS:vInstanceEdit BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'Person') TO CLASS:vPerson BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'Complex') TO CLASS:vComplex BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'CandidateSet') TO CLASS:vCandidateSet BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'DefinedSet') TO CLASS:vDefinedSet BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'OpenSet') TO CLASS:vOpenSet BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'GenomeEncodedEntity') TO CLASS:vGenomeEncodedEntity BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'EntityWithAccessionedSequence') TO CLASS:vEntityWithAccessionedSequence BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'OtherEntity') TO CLASS:vOtherEntity BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'Polymer') TO CLASS:vPolymer BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'SimpleEntity') TO CLASS:vSimpleEntity BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'Book') TO CLASS:vBook BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'LiteratureReference') TO CLASS:vLiteratureReference BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'URL') TO CLASS:vURL BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'ReferenceDatabase') TO CLASS:vReferenceDatabase BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'ReferenceGroup') TO CLASS:vReferenceGroup BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'ReferenceMolecule') TO CLASS:vReferenceMolecule BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'ReferenceDNASequence') TO CLASS:vReferenceDNASequence BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'ReferenceGeneProduct') TO CLASS:vReferenceGeneProduct BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'ReferenceIsoform') TO CLASS:vReferenceIsoform BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'ReferenceRNASequence') TO CLASS:vReferenceRNASequence BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'NegativeRegulation') TO CLASS:vNegativeRegulation BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'NegativeGeneExpressionRegulation') TO CLASS:vNegativeGeneExpressionRegulation BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'PositiveRegulation') TO CLASS:vPositiveRegulation BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'PositiveGeneExpressionRegulation') TO CLASS:vPositiveGeneExpressionRegulation BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'Requirement') TO CLASS:vRequirement BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'Summation') TO CLASS:vSummation BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'Taxon') TO CLASS:vTaxon BATCH 10
+MOVE VERTEX (SELECT FROM V WHERE Neo4jLabelList CONTAINS 'Species') TO CLASS:vSpecies BATCH 10
+
+CREATE PROPERTY vDatabaseobject.dbId LONG
+CREATE INDEX vDatabaseobject.dbId ON vDatabaseobject(dbId) UNIQUE
+
+CREATE PROPERTY vDatabaseobject.stId STRING
+CREATE INDEX vDatabaseobject.stId ON vDatabaseobject(stId) UNIQUE METADATA { ignoreNullValues : true }
+
+CREATE PROPERTY vDatabaseobject.oldStId STRING
+CREATE INDEX vDatabaseobject.oldStId ON vDatabaseobject(oldStId) UNIQUE METADATA { ignoreNullValues : true }
+
+CREATE PROPERTY vTaxon.taxId STRING
+CREATE INDEX vTaxon.taxId ON vTaxon(taxId) UNIQUE
+
+CREATE PROPERTY vReferenceEntity.identifier STRING
+CREATE INDEX vReferenceEntity.identifier ON vReferenceEntity(identifier) NOTUNIQUE
+
+CREATE PROPERTY vPerson.orcidId STRING
+CREATE INDEX vPerson.orcidId ON vPerson(orcidId) NOTUNIQUE
+
+CREATE PROPERTY vLiteratureReference.pubMedIdentifier INTEGER
+CREATE INDEX vLiteratureReference.pubMedIdentifier ON vLiteratureReference(pubMedIdentifier) NOTUNIQUE
+ 
+DROP CLASS MultipleLabelNeo4jConversion
+
+UPDATE V REMOVE Neo4jNodeID
+UPDATE V REMOVE Neo4jLabelList
+
+DROP INDEX DBInfo.Neo4jNodeID
+DROP INDEX DBInfo.Neo4jLabelList
+DROP PROPERTY DBInfo.Neo4jNodeID
+DROP PROPERTY DBInfo.Neo4jLabelList
+UPDATE DBInfo REMOVE Neo4jNodeID
+UPDATE DBInfo REMOVE Neo4jLabelList
+
+INSERT INTO DBInfo (name, version) VALUES ('reactome_OrientDB',1)
+
+
