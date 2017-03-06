@@ -1,6 +1,6 @@
 # reactome-orientdb
 
-![](image2.png)
+![](new_query_1_traverse.png)
 
 ## Introduction
 
@@ -65,7 +65,7 @@ $ ./server.sh
 
 Step 6: Point your browser to `http://localhost:2480` and connect to the reactome database using user `admin` and password `admin`
 
-![](image1.png)
+![](new_query_2_traverse.png)
 
 
 ## Querying the Reactome DB
@@ -98,6 +98,8 @@ MATCH {class: vEntityWithAccessionedSequence, as: ewas, where: (stId = 'R-HSA-19
 RETURN $pathelements
 ```
 
+![](new_query_3_graph_editor.png)
+
 Example #2
 
 ```
@@ -109,3 +111,5 @@ MATCH {
 	   class: vReferenceDatabase, as: rd}
 RETURN $pathelements
 ```
+
+![](new_query_4_graph_editor.png)
