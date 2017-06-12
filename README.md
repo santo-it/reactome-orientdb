@@ -6,9 +6,9 @@
 
 Hello and welcome to the reactome-orientdb repository!
 
-The aim of this repository is to make the Reactome database available as a graph in OrientDB, the Graph/Document Multi-Model Database
+The aim of this repository is to make the [Reactome](http://reactome.org/) database available as a graph in OrientDB, the Graph/Document Multi-Model Database
 
-We have imported the Reactome graph database into OrientDB using the [Neo4j to OrientDB Importer](http://orientdb.com/neo4j-to-orientdb-importer/), and then optimized the Reactome structure for OrientDB
+We have imported the [Reactome graph database](http://reactome.org/pages/documentation/developer-guide/graph-database/) into OrientDB using the [Neo4j to OrientDB Importer](http://orientdb.com/neo4j-to-orientdb-importer/), and then optimized the Reactome structure for OrientDB
 
 The reactome database is updated every 3-4 months. To start with, please select the branch related to your Reactome version (e.g. 59): you will be able to download directly the migrated database
 
