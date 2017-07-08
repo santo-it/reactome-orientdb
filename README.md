@@ -6,15 +6,15 @@
 
 Hello and welcome to the reactome-orientdb repository!
 
-The aim of this repository is to make the [Reactome](http://reactome.org/) database available as a graph in OrientDB, the Graph/Document Multi-Model Database
+The aim of this repository is to make the [Reactome](http://reactome.org/) database available as a graph in OrientDB, the Graph/Document Multi-Model Database.
 
-We have imported the [Reactome graph database](http://reactome.org/pages/documentation/developer-guide/graph-database/) into OrientDB using the [Neo4j to OrientDB Importer](http://orientdb.com/neo4j-to-orientdb-importer/), and then optimized the Reactome structure for OrientDB
+We have imported the [Reactome graph database](http://reactome.org/pages/documentation/developer-guide/graph-database/) into OrientDB using the [Neo4j to OrientDB Importer](http://orientdb.com/neo4j-to-orientdb-importer/), and then optimized the Reactome structure for OrientDB.
 
-The reactome database is updated every 3-4 months. To start with, please select the branch related to your Reactome version (e.g. 59): you will be able to download directly the migrated database
+The reactome database is updated every 3-4 months. To start with, please select the branch related to your Reactome version (e.g. [59](https://github.com/santo-it/reactome-orientdb/tree/59), [61](https://github.com/santo-it/reactome-orientdb/tree/61)): from there you will be able to download  the migrated database directly.
 
-Note: not all versions may have been imported into OrientDB - but you can perform the migration yourself 
+Note: not all versions may have been imported into OrientDB - but you can perform the migration yourself, if needed (see below). 
 
-Please open an issue if you have any questions or problems
+Please open an issue if you have any questions or problems.
 
 Many thanks,
 
@@ -55,7 +55,7 @@ Step 4: Optimize the structure of the Reactome database in OrientDB by applying 
 $ ./console.sh optimize_reactome_orientdb.osql
 ```
 
-Note: if you are using OrientDB 2.2.16 or below, before executing the above command please open `console.sh` and change the value of the `-Xmx512m` parameter to `-Xmx1024m`. Starting with OrientDB 2.2.17 we have raised this by default, so this step won't be necessary
+Note: if you are using OrientDB 2.2.16 or below, before executing the above command please open `console.sh` and change the value of the `-Xmx512m` parameter to `-Xmx1024m`. Starting with OrientDB 2.2.17 we have raised this by default, so this step won't be necessary.
 
 Step 5: Start an OrientDB server:
 
@@ -63,14 +63,14 @@ Step 5: Start an OrientDB server:
 $ ./server.sh
 ```
 
-Step 6: Point your browser to `http://localhost:2480` and connect to the reactome database using user `admin` and password `admin`
+Step 6: Point your browser to `http://localhost:2480` and connect to the reactome database using user `admin` and password `admin`.
 
 ![](new_query_2_traverse.png)
 
 
 ## Querying the Reactome DB
 
-Some query examples are reported below (please execute them from the "Graph Editor" Tab)
+Some query examples are reported below (please execute them from the "Graph Editor" Tab).
 
 ### Retrieving objects based on their identifier
 
