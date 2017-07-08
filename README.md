@@ -6,4 +6,4 @@ Please check the [Readme](https://github.com/santo-it/reactome-orientdb/blob/mas
 
 OrientDB graph database version of the Reactome Database (based on Reactome version 59)
 
-- reactome-orientdb-v59-1: [Downlaod Link](https://www.dropbox.com/s/5pw6z0moijiq31g/reactome.zip)
+- reactome-orientdb-v59-1: [Download Link](https://www.dropbox.com/s/5pw6z0moijiq31g/reactome.zip)
